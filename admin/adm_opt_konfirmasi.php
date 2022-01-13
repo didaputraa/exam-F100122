@@ -1,3 +1,8 @@
+<?php
+if(!isset($koneksi)){
+	include '../koneksi.php';
+}
+?> 
  <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -60,7 +65,12 @@
                           <td><?php echo $sel['alamat_futsal']; ?></td>
                           <td><?php echo $sel['kota']; ?></td>
                           <td><?php echo $sel['email']; ?></td>
-                          <td><a href="adm_opt_konfirmasi.php?url=confirm&&username=<?php echo $sel['username']; ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i> Aktifkan </a><a href="adm_opt_konfirmasi.php?url=hapus&&username=<?php echo $sel['username']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus </a></td>
+                          <td>
+							<a href="adm_opt_konfirmasi.php?url=confirm&username=<?php echo $sel['username']; ?>" class="btn btn-primary btn-xs">
+								<i class="fa fa-check"></i> Aktifkan
+							</a>
+							<a href="adm_opt_konfirmasi.php?url=hapus&username=<?php echo $sel['username']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus </a>
+						  </td>
                         </tr>
                         <?php } ?>
                       </tbody>
@@ -91,6 +101,7 @@
 							// mengirim email ke operator yang diaktifkan
 							if($sentmail)
 							{
+								mysqli_query($koneksi,"UPDATE operator set ver_code='' WHERE username='{$pil['username']}'")or die(mysqli_error($koneksi));
 								echo "<script> alert(\"Berhasil\"); window.location = \"index.php?url=opt_confirm\"; </script>";
 							}
 							else
