@@ -36,7 +36,8 @@ if(isset($_SESSION['admin'])){
     <link href="assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+	<!-- jQuery -->
+    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Custom Theme Style -->
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
     <style>
@@ -87,6 +88,7 @@ if(isset($_SESSION['admin'])){
                   <li><a><i class="fa fa-edit"></i> Konfirmasi <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.php?url=opt_confirm">Konfirmasi Operator</a></li>
+                      <li><a href="index.php?url=member_confirm">Konfirmasi Member</a></li>
                       <li><a href="index.php?url=bayar_confirm">Konfirmasi Pembayaran</a></li>
                     </ul>
                   </li>
@@ -169,6 +171,9 @@ if(isset($_SESSION['admin'])){
 			elseif($_GET['url'] == 'member'){
 				include "adm_data_member.php";
 				}
+			elseif($_GET['url'] == 'member_confirm'){
+				include "adm_data_member_confirm_view.php";
+				}
 			elseif($_GET['url'] == 'lap'){
 				include "adm_data_lap.php";
 				}
@@ -215,9 +220,6 @@ if(isset($_SESSION['admin'])){
         <!-- /footer content -->
       </div>
     </div>
-
-    <!-- jQuery -->
-    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
