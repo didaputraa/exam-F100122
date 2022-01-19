@@ -105,6 +105,11 @@
         <!-- /page content -->
         <?php
 			if(isset($_POST['kirim'])){
+				
+				if(!isset($koneksi)){
+					include '../koneksi.php';
+				}
+				
 				//ketika admin menekan tombol konfirmasi pembayaran
 				 include "../sendEmail-v156.php";
 				 $q = mysqli_fetch_array(mysqli_query($koneksi, "select * from transaksi where id_book='$_POST[id_book]'"));
